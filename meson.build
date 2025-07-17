@@ -1,3 +1,5 @@
+# meson.build
+
 project(
   'sha256_calculator',
   'c',
@@ -28,3 +30,7 @@ executable(
   dependencies: [gtk_dep, crypto_dep],
   install: true,
 )
+
+subdir('tests')
+
+message('SHA256 Calculator project configured successfully.')
