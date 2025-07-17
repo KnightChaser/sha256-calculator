@@ -16,11 +16,18 @@ gtk_dep = dependency('gtk+-3.0', version: '>= 3.0')
 # Find OpenSSL's libcrypto (dependency)
 crypto_dep = dependency('libcrypto', version: '>= 1.1')
 
+# utils library
+utils_lib = static_library(
+  'utils', # Base name of the library
+  'src/utils.c',
+  include_directories: include_directories('src'), # When including this library, the src directory is needed
+  install: false, # Not installed separately (e.g., /usr/local/lib)
+)
+
 # Source files
 sources = files(
   'src/main.c',
   'src/sha256_gui.c',
-  'src/utils.c',
 )
 
 # Create an executable
@@ -28,6 +35,7 @@ executable(
   'sha256_calculator_app',
   sources,
   dependencies: [gtk_dep, crypto_dep],
+  link_with: [utils_lib],
   install: true,
 )
 
