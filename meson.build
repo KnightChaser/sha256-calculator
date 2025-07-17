@@ -18,6 +18,7 @@ crypto_dep = dependency('libcrypto', version: '>= 1.1')
 sources = files(
   'src/main.c',
   'src/sha256_gui.c',
+  'src/utils.c',
 )
 
 # Create an executable

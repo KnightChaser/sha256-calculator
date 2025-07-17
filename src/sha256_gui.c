@@ -1,5 +1,6 @@
 // src/sha256_gui.c
 #include "sha256_gui.h"
+#include "utils.h"
 #include <gtk/gtk.h>
 #include <openssl/sha.h> // for SHA256_DIGEST_LENGTh and SHA256 functions
 #include <stdio.h>
@@ -8,17 +9,6 @@
 // GTK Widgets
 GtkWidget *input_entry;
 GtkWidget *output_label;
-
-// Function to convert a byte array to a hex string
-void bytes_to_hex_string(unsigned char *bytes, // [in]
-                         size_t len,           // [in]
-                         char *output          // [out]
-) {
-  for (size_t i = 0; i < len; i++) {
-    snprintf(output + (i * 2), 3, "%02x", bytes[i]);
-  }
-  output[len * 2] = '\0'; // Null-terminate the string
-}
 
 // Callback function for the intput changes
 void on_input_changed(GtkEditable *editable, gpointer user_data) {
