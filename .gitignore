@@ -1,3 +1,6 @@
+# Neovim caches
+.cache
+
 # Prerequisites
 *.d
 
