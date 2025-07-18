@@ -11,7 +11,8 @@ GtkWidget *input_entry;
 GtkWidget *output_label;
 
 // Callback function for the intput changes
-void on_input_changed(GtkEditable *editable, gpointer user_data) {
+void on_input_changed(GtkEditable *editable __attribute__((unused)),
+                      gpointer user_data __attribute__((unused))) {
   const char *input_text = gtk_entry_get_text(GTK_ENTRY(input_entry));
   unsigned char hash[SHA256_DIGEST_LENGTH];
   char hash_hex[SHA256_DIGEST_LENGTH * 2 + 1]; // +1 for null terminator
@@ -27,7 +28,8 @@ void on_input_changed(GtkEditable *editable, gpointer user_data) {
 }
 
 // Function to create and run the GTK application
-static void activate(GtkApplication *app, gpointer user_data) {
+static void activate(GtkApplication *app,
+                     gpointer user_data __attribute__((unused))) {
   GtkWidget *window;
   GtkWidget *vbox;
 
