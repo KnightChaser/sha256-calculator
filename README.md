@@ -10,10 +10,11 @@ With Meson, developers can build and test their programs more easily.
 
 1. Clone the Git repository
 2. Hit `meson setup build` to create the source directory. (Later, if you made structural/fundamental changes to the code base, hit `meson setup build --reconfigure` to refresh)
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/acf64241-760e-4651-a45a-88f4909eb257" />
+<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/6de7cffd-8c82-4fe6-a95f-584b5d280aec" />
 
 3. **Inside the build directory**, hit `meson test` to run the test. Test codes are written in `tests/`
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/8d5ac220-0ff5-430b-b2ce-ad9ce0ca550d" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/fdd7efe5-b70d-470b-8edf-10a713863776" />
 
 4. **Inside the build directory**, hit `meson compile` to build the source and yield the executable. Source codes are written in `src/`
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/7737f4bf-32d7-49d5-9a34-c38900371b95" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/c798d0c4-1535-4705-a6d9-a6e35dbddbf8" />
+
