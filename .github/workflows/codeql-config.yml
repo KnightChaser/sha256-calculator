@@ -1,0 +1,9 @@
+name: sha256-calculator
+queries:
+  - uses: security-extended
+  - uses: security-and-quality
+paths:
+  - src
+  - tests
+paths-ignore:
+  - build
