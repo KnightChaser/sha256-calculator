@@ -1,0 +1,55 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 9 * * 1'   # Mondays 09:00 UTC (~18:00 KST)
+
+jobs:
+  analyze:
+    name: Analyze (C/C++)
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'cpp' ]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+
+    # ---- Build deps for Meson/GTK/SSL ----
+    - name: Install build deps
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y meson ninja-build libgtk-3-dev libssl-dev pkg-config
+
+    # ---- Build (manual mode) ----
+    - name: Configure (Meson)
+      run: meson setup build --buildtype=debug
+
+    - name: Compile
+      run: meson compile -C build
+
+    # (Optional) run tests so CodeQL sees more compiles
+    - name: Test
+      run: meson test -C build --print-errorlogs
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: '/language:${{ matrix.language }}'
